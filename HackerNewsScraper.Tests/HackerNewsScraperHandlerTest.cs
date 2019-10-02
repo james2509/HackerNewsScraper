@@ -53,7 +53,21 @@ namespace HackerNewsScraper.Tests
 
             //Assert
             consoleStream.Errors.Count.Should().Be(1);
-            consoleStream.Errors.Any(e => e == "Number of posts cannot exceed 100").Should().BeTrue();
+            consoleStream.Errors.Any(e => e == "Number of posts must be a positive integer not exceeding 100").Should().BeTrue();
+        }
+
+        [Fact]
+        public void GivenAnOptionsPassedIntoHandle_WithPostLessThan1_ExpectErrorInErrorStream()
+        {
+            //Arrange
+            var handler = new HackerNewsScraperHandler(new HackerNewsService());
+
+            //Act
+            handler.Handle(new Options { Posts = 0 }, consoleStream);
+
+            //Assert
+            consoleStream.Errors.Count.Should().Be(1);
+            consoleStream.Errors.Any(e => e == "Number of posts must be a positive integer not exceeding 100").Should().BeTrue();
         }
     }
 }

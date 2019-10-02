@@ -33,9 +33,9 @@ namespace HackerNewsScraper
         public void Handle(Options options, IConsoleStream consoleStream)
         {
             // Validate that the number of Posts does not exceed 100
-            if (options.Posts > 100)
+            if (options.Posts < 1 || options.Posts > 100)
             {
-                consoleStream.WriteErrorLine("Number of posts cannot exceed 100");
+                consoleStream.WriteErrorLine("Number of posts must be a positive integer not exceeding 100");
                 return;
             }
 
