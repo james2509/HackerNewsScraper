@@ -89,6 +89,20 @@ namespace HackerNewsScraper.Tests.Validators
         }
 
         [Fact]
+        public void GivenAPostObject_WithScoreSetToZero_IsValidReturnsTrue()
+        {
+            //Arrange
+            var score = 0;
+            var post = GetPostObject(score: score);
+
+            //Act
+            var result = PostValidator.Validate(post);
+
+            //Assert
+            result.Should().BeTrue();
+        }
+
+        [Fact]
         public void GivenAPostObject_WithDescendantsSetToNegativeInteger_IsValidReturnsFalse()
         {
             //Arrange
@@ -103,6 +117,20 @@ namespace HackerNewsScraper.Tests.Validators
         }
 
         [Fact]
+        public void GivenAPostObject_WithDescendantsSetToZero_IsValidReturnsTrue()
+        {
+            //Arrange
+            var descendants = 0;
+            var post = GetPostObject(descendants: descendants);
+
+            //Act
+            var result = PostValidator.Validate(post);
+
+            //Assert
+            result.Should().BeTrue();
+        }
+
+        [Fact]
         public void GivenAPostObject_WithRankSetToNegativeInteger_IsValidReturnsFalse()
         {
             //Arrange
@@ -114,6 +142,20 @@ namespace HackerNewsScraper.Tests.Validators
 
             //Assert
             result.Should().BeFalse();
+        }
+
+        [Fact]
+        public void GivenAPostObject_WithRankSetToZero_IsValidReturnsTrue()
+        {
+            //Arrange
+            var rank = 0;
+            var post = GetPostObject(rank: rank);
+
+            //Act
+            var result = PostValidator.Validate(post);
+
+            //Assert
+            result.Should().BeTrue();
         }
 
         [Fact]
