@@ -1,7 +1,7 @@
 # HackerNewsScraper
 
 ## Prerequisites
-This application is build using .Net Core 3.0 so the .Net Core 3.0 SDK needs to be installed.
+This application is built using .Net Core 3.0 so the .Net Core 3.0 SDK needs to be installed.
 
 [https://dotnet.microsoft.com/download/dotnet-core/3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
