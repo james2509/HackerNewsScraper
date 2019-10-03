@@ -8,15 +8,27 @@
   <ItemGroup>
     <None Remove="Data\21134540.json" />
     <None Remove="Data\21135259.json" />
+    <None Remove="Data\21138841.json" />
+    <None Remove="Data\21143102.json" />
+    <None Remove="Data\21144098.json" />
+    <None Remove="Data\21144604.json" />
     <None Remove="Data\999.json" />
+    <None Remove="Expected\WithHttpResponseWithFiveValidPosts.json" />
     <None Remove="Expected\WithHttpResponseWithTwoValidPost.json" />
+    <None Remove="Expected\WithHttpResponseWithTwoValidPostsAndPostsNumberIsOne.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\21135259.json" />
     <EmbeddedResource Include="Data\21134540.json" />
+    <EmbeddedResource Include="Data\21138841.json" />
+    <EmbeddedResource Include="Data\21143102.json" />
+    <EmbeddedResource Include="Data\21144098.json" />
+    <EmbeddedResource Include="Data\21144604.json" />
     <EmbeddedResource Include="Data\999.json" />
+    <EmbeddedResource Include="Expected\WithHttpResponseWithFiveValidPosts.json" />
     <EmbeddedResource Include="Expected\WithHttpResponseWithTwoValidPost.json" />
+    <EmbeddedResource Include="Expected\WithHttpResponseWithTwoValidPostsAndPostsNumberIsOne.json" />
   </ItemGroup>
 
   <ItemGroup>

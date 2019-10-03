@@ -43,6 +43,57 @@ namespace HackerNewsScraper.Tests
         }
 
         [Fact]
+        public void GivenHandleCalled_WithHttpResponseWithThreePostsOneInvalid_ExpectFormattedJsonOnOutputStreamWithTwoPosts()
+        {
+            //Arrange
+            var mockHttpHandler = MockPostHttpMessageHandlerCreator.Create(new List<long> { 21134540, 21135259, 21143102 });
+            var service = new HackerNewsService(new HttpClient(mockHttpHandler));
+            var handler = new HackerNewsScraperHandler(service);
+            var expected = JsonPostResourceLoader.Load("WithHttpResponseWithTwoValidPost");
+
+            //Act
+            handler.Handle(new Options { Posts = 2 }, consoleStream);
+
+            //Assert
+            var output = consoleStream.Output.ToString();
+            output.Should().Be(expected);
+        }
+
+        [Fact]
+        public void GivenHandleCalled_WithHttpResponseWithTwoValidPostsAndPostsNumberIsOne_ExpectFormattedJsonOnOutputStreamWithOnePost()
+        {
+            //Arrange
+            var mockHttpHandler = MockPostHttpMessageHandlerCreator.Create(new List<long> { 21134540, 21135259 });
+            var service = new HackerNewsService(new HttpClient(mockHttpHandler));
+            var handler = new HackerNewsScraperHandler(service);
+            var expected = JsonPostResourceLoader.Load("WithHttpResponseWithTwoValidPostsAndPostsNumberIsOne");
+
+            //Act
+            handler.Handle(new Options { Posts = 1 }, consoleStream);
+
+            //Assert
+            var output = consoleStream.Output.ToString();
+            output.Should().Be(expected);
+        }
+
+        [Fact]
+        public void GivenHandleCalled_WithHttpResponseWithFiveValidPosts_ExpectFormattedJsonOnOutputWithPostsInOrderOfIdsCollection()
+        {
+            //Arrange
+            var mockHttpHandler = MockPostHttpMessageHandlerCreator.Create(new List<long> { 21134540, 21135259, 21144604, 21138841, 21144098 });
+            var service = new HackerNewsService(new HttpClient(mockHttpHandler));
+            var handler = new HackerNewsScraperHandler(service);
+            var expected = JsonPostResourceLoader.Load("WithHttpResponseWithFiveValidPosts");
+
+            //Act
+            handler.Handle(new Options { Posts = 5 }, consoleStream);
+
+            //Assert
+            var output = consoleStream.Output.ToString();
+            output.Should().Be(expected);
+        }
+
+        [Fact]
         public void GivenAnOptionsPassedIntoHandle_WithPostExceedingOneHundred_ExpectErrorInErrorStream()
         {
             //Arrange
